@@ -1,6 +1,15 @@
 ---
+- name: nginx |install
+  apt: name=nginx state=present
+  tags:
+    - nginx
+
 - name: nginx | create conf.d dir
-  file: path=/etc/nginx/ssl state=directory
+  file: path=/etc/nginx/{{ item }} state=directory
+  with_items:
+    - ssl
+    - conf.d
+  
   tags:
     - nginx
  
@@ -30,11 +39,10 @@
     - nginx.crt  
     - nginx.key
     - dhparam.pem
+  
 
 - name: nginx | copy sites config
-  template: src={{ item }} dest=/etc/nginx/conf.d/http_{{ repo_desafio }}.conf owner=root mode=440
-  with_items:
-    - http_node
+  template: src=http_node.conf  dest=/etc/nginx/conf.d/http_{{ repo_desafio }}.conf owner=root mode=440
   notify: restart nginx
   tags:
     - nginx
