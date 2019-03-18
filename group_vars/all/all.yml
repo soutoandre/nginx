@@ -1,0 +1,5 @@
+repo_desafio: desafio2
+nginx_server_name: www.testenode.com
+cert_crt: nginx.crt
+cert_key: nginx.key
+

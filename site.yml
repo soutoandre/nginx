@@ -1,0 +1,7 @@
+---
+- name: ngnix
+  hosts: nginx
+  become: yes
+  remote_user: ansible
+  roles:
+    - nginx

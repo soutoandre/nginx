@@ -1,0 +1,45 @@
+---
+- name: nginx | create conf.d dir
+  file: path=/etc/nginx/ssl state=directory
+  tags:
+    - nginx
+ 
+
+- name: nginx | copy nginx config files
+  template: src={{ item }} dest=/etc/nginx/{{ item }} owner=root mode=440
+  with_items:
+    - nginx.conf
+    - nginx_http.conf
+  notify: restart nginx
+  tags:
+    - nginx
+
+
+- name: nginx | copy  config
+  template: src={{ item }} dest=/etc/nginx/conf.d/{{ item }}  owner=root mode=440
+  with_items:
+    - config_proxy.conf
+    - config_cache.conf
+  tags:
+    - nginx
+
+
+- name: nginx | copy cert
+  copy: src={{ item }} dest=/etc/nginx/ssl/{{ item }} owner=root mode=440
+  with_items:
+    - nginx.crt  
+    - nginx.key
+    - dhparam.pem
+
+- name: nginx | copy sites config
+  template: src={{ item }} dest=/etc/nginx/conf.d/http_{{ repo_desafio }}.conf owner=root mode=440
+  with_items:
+    - http_node
+  notify: restart nginx
+  tags:
+    - nginx
+
+- name: nginx | service start
+  service: name=nginx state=started
+  tags: 
+    - nginx
