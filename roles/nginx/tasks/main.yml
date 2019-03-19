@@ -57,7 +57,10 @@
 
 
 - name: nginx | parse log
-  template : src=script.sh    dest=/root/parse.sh owner=root mode=755 
+  template : src={{ item }}    dest=/root/{{ item }}  owner=root mode=755 
+  with_items:
+    - monitor.sh
+    - parse.sh 
   tags:
     - ngnix
 
