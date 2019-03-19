@@ -14,11 +14,11 @@
         EMAIL_ACCOUNT_PASSWORD: "{{ vault_EMAIL_ACCOUNT_PASSWORD }}"
         FRIENDLY_NAME: fulano
 
-## Também é bom criar um arquivo vault
+#### Também é bom criar um arquivo vault
 
         sudo ansible-playbook create group_vars/all/vault.yml
 
-# No inventory pode se ter quandos backends(nodes) se quizer
+#### No inventory pode se ter quandos backends(nodes) se quizer
 
         vim inventory
         [nginx]
