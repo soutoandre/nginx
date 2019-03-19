@@ -69,11 +69,17 @@
   tags:
    - ngnix
 
-- name: nginx | crontab
+- name: nginx | crontab http_status
   cron:
     name: "report http_status" 
     minute: 00
     hour: 00
     job: "/root/parse.sh"
 
+
+- name: nginx | crontab monitor
+  cron:
+    name: "monitor nginix"
+    minute: "*/2"
+    job: "/root/monitor.sh"
 
