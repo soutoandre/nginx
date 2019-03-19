@@ -18,7 +18,7 @@
 
         sudo ansible-playbook create group_vars/all/vault.yml
 
-#### No inventory pode se ter quandos backends(nodes) se quizer
+#### No inventory pode se ter quandos backends(nodes) precisar
 
         vim inventory
         [nginx]
