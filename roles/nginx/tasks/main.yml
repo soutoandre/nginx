@@ -1,6 +1,9 @@
 ---
 - name: nginx |install
-  apt: name=nginx state=present
+  apt: name={{ item }} state=present
+  with_items:
+    - nginx
+    - heirloom-mailx
   tags:
     - nginx
 
@@ -51,3 +54,23 @@
   service: name=nginx state=started
   tags: 
     - nginx
+
+
+- name: nginx | parse log
+  template : src=script.sh    dest=/root/parse.sh owner=root mode=755 
+  tags:
+    - ngnix
+
+- name: nginx | relay
+  template: src=mailrc dest=/root/.mailrc owner=root mode=600  
+  tags:
+   - ngnix
+
+- name: nginx | crontab
+  cron:
+    name: "report http_status" 
+    minute: 00
+    hour: 00
+    job: "/root/parse.sh"
+
+

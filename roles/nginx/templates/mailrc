@@ -1,0 +1,7 @@
+set smtp-use-starttls
+set ssl-verify=ignore
+set smtp=smtp://{{ smtp_email }}
+set smtp-auth=login
+set smtp-auth-user={{ FROM_EMAIL_ADDRESS }}
+set smtp-auth-password={{ EMAIL_ACCOUNT_PASSWORD }}
+set from="{{ FROM_EMAIL_ADDRESS }}( {{ FRIENDLY_NAME }} )"

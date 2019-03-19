@@ -3,3 +3,8 @@ nginx_server_name: www.testenode.com
 cert_crt: nginx.crt
 cert_key: nginx.key
 
+smtp_email: smtp.exemplo.com:587
+FROM_EMAIL_ADDRESS: user@email.com
+EMAIL_ACCOUNT_PASSWORD: "{{ vault_EMAIL_ACCOUNT_PASSWORD }}"
+FRIENDLY_NAME: fulano
+
