@@ -1,6 +1,6 @@
 
 ## Nginx
-  
+Ansbile feito para rodar em ubuntu  
 
 ### Para instalar o LB
 
@@ -28,3 +28,10 @@
         10.168.99.100
         10.168.99.101
 
+Para rodar os playbooks deverá existir um usuário ansible  destino.
+           
+          1) adduser ansible 
+          2) passwd ansible
+          3) vim /etc/sudoers
+             ansible ALL=(ALL)  NOPASSWD: ALL
+obs. para não informar a senha a todo momento, pode ser feito  trocas de  [chaves publicas!]( https://www.digitalocean.com/community/tutorials/como-configurar-chaves-ssh-no-ubuntu-18-04-pt)
