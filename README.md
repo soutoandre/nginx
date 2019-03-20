@@ -28,7 +28,7 @@ Ansbile feito para rodar em ubuntu
         10.168.99.100
         10.168.99.101
 
-Para rodar os playbooks deverá existir um usuário ansible  destino.
+#### Para rodar os playbooks deverá existir um usuário ansible  destino.
            
           1) adduser ansible 
           2) passwd ansible
